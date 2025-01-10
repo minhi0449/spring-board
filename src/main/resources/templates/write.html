@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>write</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" th:href="@{/css/write.css}">
+    <!-- 
+        날짜 : 2025.01.10 (금)
+        이름 : 김민희
+        내용 : view 페이지 구현
+    -->
+</head>
+<body>
+    <!-- #warp -->
+    <div id="wrap">
+        <header id="header">
+            <div class="h">
+                <h3 class="tit">📝 Spring Boot 익명게시판 Write</h3>
+                <!-- <p>날짜 : 2025.01.10 (금)</p> -->
+            </div>
+        </header><!-- #header -->
+
+        <article class="cont1">
+            <form th:action="@{/write}" method="post">
+                <table class="tb">
+                    <tbody>
+
+                        <!-- title : 제목 -->
+                        <tr>
+                            <td class="title">제목</td>
+                            <td>
+                                <input type="text" name="title">
+                            </td>
+                        </tr>
+
+                        <!-- uid : 작성자 -->
+                        <tr>
+                            <td class="uid" >작성자</td>
+                            <td>
+                                <input type="text" name="writer">
+                            </td>
+                        </tr>
+
+                        <!-- date : 날짜 -->
+
+                        <!-- cont : 내용 -->
+                        <tr>
+                            <td class="cont" >내용</td>
+                            <td>
+                                <input type="text" name="content">
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table><!-- .tb -->
+                <div class="btns">
+                    <!-- 작성/취소 클릭 시 -> List 페이지 이동 -->
+                    <button type="submit" class="btn">
+                        작성
+                    </button>
+
+                    <a th:href="@{/list}" class="cancle btn">취소</a>
+                </div>
+            </form><!-- .form -->
+        </article><!-- .cont1 -->
+        
+        <footer id="footer">
+            <span class="copy">copyright &copy;2025 Engineer_Kimminimanimu</span>
+        </footer><!-- #footer -->
+
+    </div><!-- #warp -->
+
+    
+</body>
+</html>

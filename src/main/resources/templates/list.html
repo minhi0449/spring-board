@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- 처음에 아래 thymeleaf 추가 안 해줘서 실행 x -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+    <!-- 
+        날짜 : 2025.01.10 (금)
+        이름 : 김민희
+        내용 : 스프링 부트 익명게시판 구현
+              게시판 목록 페이지
+
+        수정 이력 : ex) 2025.01.10 (금)
+    -->
+</head>
+<body>
+    <!-- #warp -->
+    <div id="wrap">
+        <header id="header">
+            <div class="h">
+                <h3 class="tit">📃 Spring Boot 익명게시판 List</h3>
+                <!-- <p>날짜 : 2025.01.10 (금)</p> -->
+            </div>
+        </header><!-- #header -->
+
+        <article class="cont1">
+            <!-- * 폼 데이터 전송 || action : 어디로 보낼지 || method : 어떻게 보낼지 (get, post) -->
+            <form th:action="@{/list}" method="get">
+                <table class="tb">
+                    <colgroup>
+                        <col width="5%" />
+                        <col width="15%" />
+                        <col width="50%" />
+                        <col width="15%" />
+                        <col width="15%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>내용</th>
+                            <th>작성자</th>
+                            <th>날짜</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="board : ${boards}">
+                            <!-- 번호 -->
+                            <td th:text="${boards.id}">[[${boards.id}]]</td>
+
+                            <!-- 제목 -->
+                            <td th:text="${boards.title}">[[${boards.title}]]</td>
+
+                            <!-- 내용 -->
+                            <td th:text="${boards.context}">[[${boards.context}]]</td>
+
+                            <!-- 작성자 -->
+                            <td th:text="${boards.writer}">[[${boards.writer}]]</td>
+
+                            <!-- 날짜 -->
+                            <td th:date="${boards.creatAt}">[[${boards.creatAt}]]</td>
+                        </tr>
+                    </tbody>
+                </table><!-- .tb -->
+
+                <a th:href="@{/write}" class="write"> 글쓰기 </a><!-- .write -->
+            </form><!-- .form -->
+        </article><!-- .cont1 -->
+        
+        <footer id="footer">
+            <span class="copy">copyright &copy;2025 Engineer_Kimminimanimu</span>
+        </footer><!-- #footer -->
+
+    </div><!-- #warp -->
+
+</body>
+</html>

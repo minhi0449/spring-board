@@ -1,0 +1,65 @@
+@charset "utf-8";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+/* 
+    날짜 : 2025.01.10 (금)
+    이름 : 김민희
+    내용 : list.css 내용 작성
+
+*/
+
+/* reset */
+*{padding: 0; margin: 0;}
+a{text-decoration-line: none; color: #000;}
+
+
+/* warp */
+#wrap{width: 980px; height: auto; margin: 0 auto;}
+
+
+/* header */
+#header{
+    width: 980px; 
+    /* background-color: #ff9;  */
+    margin: 0 auto;
+    height: 20px;
+    padding-top: 100px;
+}
+
+.h{
+    margin-bottom: 20px;
+}
+
+.tit{
+    margin-bottom: 20px;
+}
+
+
+/* cont1 */
+.cont1{
+    text-align: left;
+}
+
+.tb{
+    margin-top: 20px;
+    border: 1px solid #888;
+    border-radius: 7px;
+}
+
+
+thead{
+    border-bottom: 1px solid #888;
+    height: 30px;
+    line-height: 30px;
+}
+
+th{
+    border-bottom: 1px solid #888;
+}
+
+
+
+/* footer */
+#footer{}
+#footer::after{display: block; content: ""; clear: both;}
+.copy{float: left; display: block; margin-top: 15px; font-size: 13px; color: #999;}
+
