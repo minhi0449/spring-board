@@ -43,7 +43,7 @@ public class boardController {
 
         log.info("저장된 글 목록 1: " + boards);
         // Service에서 생성한 리스트를 "board" 이름으로 반환
-        model.addAttribute("board", boards);
+        model.addAttribute("boards", boards);
 
         log.info("저장된 글 목록 22 : " + boards);
         return "/list";

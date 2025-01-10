@@ -49,19 +49,19 @@
                     <tbody>
                         <tr th:each="board : ${boards}">
                             <!-- 번호 -->
-                            <td th:text="${boards.id}">[[${boards.id}]]</td>
+                            <td th:text="${board.id}"></td>
 
                             <!-- 제목 -->
-                            <td th:text="${boards.title}">[[${boards.title}]]</td>
+                            <td th:text="${board.title}"></td>
 
                             <!-- 내용 -->
-                            <td th:text="${boards.context}">[[${boards.context}]]</td>
+                            <td th:text="${board.content}"></td>
 
                             <!-- 작성자 -->
-                            <td th:text="${boards.writer}">[[${boards.writer}]]</td>
+                            <td th:text="${board.writer}"></td>
 
                             <!-- 날짜 -->
-                            <td th:date="${boards.creatAt}">[[${boards.creatAt}]]</td>
+                            <td th:date="${board.creatAt}"></td>
                         </tr>
                     </tbody>
                 </table><!-- .tb -->
