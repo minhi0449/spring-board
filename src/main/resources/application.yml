@@ -1,35 +1,60 @@
+# 로그 설정
+logging:
+  file:
+      name: /logs/spring-blog.log # 로그를 저장할 파일 경로
+  level:
+      jdbc:
+          resultsettable: debug # SQL 결과 테이블 로그 출력
+          sqlonly: debug # SQL 실행만 로깅
+          sqltimig: debug # SQL 실행 시간 로깅
+      org:
+          hibernate:
+              orm:
+                  jdbc:
+                      bind: trace # SQL 값 바인딩 값 로깅
+              sql: debug # Hibernate SQL 실행 로그
+          root: info # 기본 로그 레벨
 
 # 서버 포트 설정
 server:
-    port: 8080
+    port: 8080 # 서버 실행 포트
     address: 0.0.0.0
+    servlet:
+        context-path: / # 기본 url 경로 설정
 
+# 스프링 설정
 spring:
     application:
-        name: springBoot_blog
+        name: spring-blog
     
     # DataBase 연동 설정
     datasource:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        password: asd1234
-        url: jdbc:mysql://127.0.0.1/springBoot_blog
-        username: root
+        driver-class-name: com.mysql.cj.jdbc.Driver # MySQL 드라이버
+        url: jdbc:mysql://127.0.0.1:3306/spring-blog # MySQL 데이터베이스 URL
+        username: root # DB 로그인 ID
+        password: Rlaalsgml312! # DB 비밀번호
+
+    devtools:
+      livereload:
+          enabled: true # 코드 수정 시 자동 새로고침
 
     # Spring Data JPA 설정
     jpa:
+        database: mysql
         hibernate:
-            ddl-auto: update
+            ddl-auto: update # DB 테이블 자동 업데이트
         properties:
           hibernate:
               dialect: org.hibernate.dialect.MySQL8Dialect
-              format_sql: true
-          show_sql: true
-    
+              format_sql: true # SQL 보기 쉽게 정리
+          show_sql: true # SQL 실행문 출력
+
     # 애플리케이션을 시작하고 디자인 수정 후 새로고침을 하더라도
     # 수정 전의 페이지만 나오는 것을 확인 할 수 있는데 
     # 이를 보완하기 위해 해당 캐싱의 속성을 설정 (배포 시 true 설정)
     thymeleaf:
         cache: false
+        prefix: classpath:/templates # HTML 파일 위치 (classpath 가 resource 위치까지 가리킴)
 
     # 리소스 찾을 위치 변경 가능
     # 모든 자원을 /resources/** 로 재배치 하고 싶다면 아래의 설정을 추가해주면 된다.
