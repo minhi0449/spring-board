@@ -1,15 +1,13 @@
 package com.sbb.springboot_blog.dto;
 
 import com.sbb.springboot_blog.entity.Board;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
-//@Builder
+@AllArgsConstructor
+@Builder
 public class BoardDTO {
 
     private Long id; // 게시글 번호

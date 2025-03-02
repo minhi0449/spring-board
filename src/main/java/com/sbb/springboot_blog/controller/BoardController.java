@@ -4,14 +4,12 @@ import com.sbb.springboot_blog.dto.BoardDTO;
 import com.sbb.springboot_blog.entity.Board;
 import com.sbb.springboot_blog.service.BoardService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -29,9 +27,9 @@ import java.util.List;
 
 @Controller
 @Log4j2
-@AllArgsConstructor
+@RequiredArgsConstructor
 //@RequestMapping("/board")
-public class boardController {
+public class BoardController {
 
     private final BoardService boardService;
 

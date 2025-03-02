@@ -1,7 +1,7 @@
 # 로그 설정
 logging:
   file:
-      name: /logs/spring-blog.log # 로그를 저장할 파일 경로
+      name: /logs/spring-board.log # 로그를 저장할 파일 경로
   level:
       jdbc:
           resultsettable: debug # SQL 결과 테이블 로그 출력
@@ -25,14 +25,14 @@ server:
 # 스프링 설정
 spring:
     application:
-        name: spring-blog
+        name: spring-board
     
     # DataBase 연동 설정
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver # MySQL 드라이버
-        url: jdbc:mysql://127.0.0.1:3306/spring-blog # MySQL 데이터베이스 URL
+        url: jdbc:mysql://127.0.0.1:3306/spring_board # MySQL 데이터베이스 URL
         username: root # DB 로그인 ID
-        password: Rlaalsgml312! # DB 비밀번호
+        password: "Rlaalsgml312!" # DB 비밀번호
 
     devtools:
       livereload:
@@ -43,11 +43,11 @@ spring:
         database: mysql
         hibernate:
             ddl-auto: update # DB 테이블 자동 업데이트
+        show_sql: true # SQL 실행문 출력
         properties:
           hibernate:
               dialect: org.hibernate.dialect.MySQL8Dialect
               format_sql: true # SQL 보기 쉽게 정리
-          show_sql: true # SQL 실행문 출력
 
     # 애플리케이션을 시작하고 디자인 수정 후 새로고침을 하더라도
     # 수정 전의 페이지만 나오는 것을 확인 할 수 있는데 
