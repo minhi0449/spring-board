@@ -1,46 +1,44 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 작성</title>
+    <title>modify</title>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-    <link rel="stylesheet" th:href="@{/css/write.css}">
+    <link rel="stylesheet" th:href="@{/css/modify.css}">
     <!--
-        날짜 : 2025.01.10 (금)
+        날짜 : 2025.03.02 (일)
         이름 : 김민희
-        내용 : write 페이지 구현
-
-        수정이력:
-        2025.03.02 (일) - 김민희 : 디자인 개선, 폼 입력 필드 개선
+        내용 : modify - 게시글 수정 페이지
     -->
 </head>
 <body>
-<!-- #wrap -->
+<!-- #warp -->
 <div id="wrap">
     <header id="header">
         <div class="h">
-            <h3 class="tit">📝 Spring Boot 익명게시판 Write</h3>
+            <h3 class="tit">✏️ Spring Boot 익명게시판 Modify</h3>
         </div>
     </header><!-- #header -->
 
     <article class="cont1">
-        <form th:action="@{/write}" method="post">
+        <form th:action="@{/modify}" method="post">
+            <input type="hidden" name="id" th:value="${board.id}">
             <table class="tb">
                 <tbody>
                 <!-- title : 제목 -->
                 <tr>
                     <td class="title">제목</td>
                     <td>
-                        <input type="text" name="title" placeholder="제목을 입력해주세요. (20자 이내로 입력 가능합니다.)" required>
+                        <input type="text" name="title" th:value="${board.title}">
                     </td>
                 </tr>
 
-                <!-- writer : 작성자 -->
+                <!-- uid : 작성자 -->
                 <tr>
-                    <td class="writer">작성자</td>
+                    <td class="uid">작성자</td>
                     <td>
-                        <input type="text" name="writer" placeholder="작성자 명을 입력해 주세요." required>
+                        <input type="text" name="writer" th:value="${board.writer}">
                     </td>
                 </tr>
 
@@ -48,20 +46,15 @@
                 <tr>
                     <td class="cont">내용</td>
                     <td>
-                        <textarea name="content" placeholder="내용을 입력해 주세요." required></textarea>
+                        <textarea name="content" th:text="${board.content}"></textarea>
                     </td>
                 </tr>
                 </tbody>
             </table><!-- .tb -->
 
             <div class="btns">
-                <!-- 작성 버튼 - 서버로 데이터 전송 -->
-                <button type="submit" class="btn">
-                    작성
-                </button>
-
-                <!-- 취소 버튼 - 리스트 페이지로 이동 -->
-                <a th:href="@{/list}" class="cancle btn">취소</a>
+                <button type="submit" class="btn save">저장</button>
+                <a th:href="@{/view(id=${board.id})}" class="btn cancel">취소</a>
             </div>
         </form><!-- .form -->
     </article><!-- .cont1 -->
@@ -70,6 +63,6 @@
         <span class="copy">copyright &copy;2025 Engineer_Kimminimanimu</span>
     </footer><!-- #footer -->
 
-</div><!-- #wrap -->
+</div><!-- #warp -->
 </body>
 </html>

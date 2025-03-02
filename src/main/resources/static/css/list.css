@@ -8,22 +8,23 @@
 */
 
 /* reset */
-*{padding: 0; margin: 0;}
+*{padding: 0; margin: 0; box-sizing: border-box; font-family: "Pretendard Variable", sans-serif;}
+body {background-color: #f8f9fa; color: #333;}
 a{text-decoration-line: none; color: #000;}
 
 
 
 /* warp */
-#wrap{width: 980px; height: auto; margin: 0 auto;}
+#wrap{width: 980px; height: auto; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.05); margin-top: 30px; margin-bottom: 30px;}
 
 
 /* header */
 #header{
-    width: 980px; 
-    /* background-color: #ff9;  */
+    width: 100%;
     margin: 0 auto;
-    height: 20px;
-    padding-top: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
 }
 
 .h{
@@ -32,60 +33,188 @@ a{text-decoration-line: none; color: #000;}
 
 .tit{
     margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    position: relative;
+    padding-left: 10px;
+}
+
+.tit::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #3574f0;
+    border-radius: 2px;
 }
 
 
 /* cont1 */
 .cont1{
-    
+    padding: 20px 0;
 }
 
+/* Search */
+.search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-select {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-input {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 250px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-button {
+    padding: 8px 15px;
+    background-color: #3574f0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.search-button:hover {
+    background-color: #2b5fc7;
+}
+
+/* Table */
 .tb{
+    width: 100%;
     font-size: 14.5px;
     text-align: center;
     margin-top: 20px;
-    padding: 7px;
-    border: 1px solid #ccc;
+    border-collapse: collapse;
     border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.03);
 }
-
 
 thead{
-    border-bottom: 1px solid #888;
-    height: 30px;
-    line-height: 30px;
+    background-color: #f1f3f9;
 }
 
-tr{
+thead tr th {
+    padding: 15px;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #3574f0;
 }
 
-th{
-    border-bottom: 1px solid #888;
+tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: all 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+tbody tr td {
+    padding: 15px 10px;
+    color: #555;
+}
+
+tbody tr td:nth-child(3) {
+    text-align: left;
+    padding-left: 20px;
 }
 
 .write{
     cursor: pointer;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 20px;
     display: block;
     text-align: center;
-    width: 80px;
-    height: 30px;
-    line-height: 30px;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
     border-radius: 5px;
     background-color: #3574f0;
     color: #fff;
     transition: all 0.3s;
+    float: right;
 }
 
 .write:hover{
     transition: all 0.3s;
-    background-color: #000;
+    background-color: #2b5fc7;
+    box-shadow: 0 2px 5px rgba(43, 95, 199, 0.3);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 5px;
+}
+
+.pagination a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #555;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #f1f3f9;
+    border-color: #3574f0;
+    color: #3574f0;
+}
+
+.pagination a.active {
+    background-color: #3574f0;
+    border-color: #3574f0;
+    color: white;
+}
+
+.pagination a.prev, .pagination a.next {
+    width: auto;
+    padding: 0 15px;
 }
 
 /* footer */
-#footer{}
+#footer{
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
 #footer::after{display: block; content: ""; clear: both;}
-.copy{float: left; display: block; margin-top: 15px; font-size: 13px; color: #999;}
-
+.copy{
+    float: left;
+    display: block;
+    margin-top: 15px;
+    font-size: 13px;
+    color: #999;
+}

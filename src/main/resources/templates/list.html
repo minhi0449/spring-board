@@ -13,68 +13,92 @@
         내용 : 스프링 부트 익명게시판 구현
               게시판 목록 페이지
 
-        수정 이력 : ex) 2025.01.10 (금)
+        수정 이력 :
+        2025.03.02 (일) - 김민희 : [수정/삭제] 버튼 및 페이지네이션 추가
     -->
 </head>
 <body>
-    <!-- #warp -->
-    <div id="wrap">
-        <header id="header">
-            <div class="h">
-                <h3 class="tit">📃 Spring Boot 익명게시판 List</h3>
-                <!-- <p>날짜 : 2025.01.10 (금)</p> -->
+<!-- #warp -->
+<div id="wrap">
+    <header id="header">
+        <div class="h">
+            <h3 class="tit">📃 Spring Boot 익명게시판 List</h3>
+            <!-- <p>날짜 : 2025.01.10 (금)</p> -->
+        </div>
+    </header><!-- #header -->
+
+    <article class="cont1">
+        <!-- 검색 기능 추가 -->
+        <div class="search-container">
+            <form class="search-form" th:action="@{/list}" method="get">
+                <select name="searchType" class="search-select">
+                    <option value="title">제목</option>
+                    <option value="content">내용</option>
+                    <option value="writer">작성자</option>
+                </select>
+                <input type="text" name="keyword" class="search-input" placeholder="검색어를 입력하세요">
+                <button type="submit" class="search-button">검색</button>
+            </form>
+            <a th:href="@{/write}" class="write"> 글쓰기 </a>
+        </div>
+
+        <!-- * 폼 데이터 전송 || action : 어디로 보낼지 || method : 어떻게 보낼지 (get, post) -->
+        <form th:action="@{/list}" method="get">
+            <table class="tb">
+                <colgroup>
+                    <col width="8%" />
+                    <col width="20%" />
+                    <col width="42%" />
+                    <col width="15%" />
+                    <col width="15%" />
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>내용</th>
+                    <th>작성자</th>
+                    <th>날짜</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="board : ${boards}">
+                    <!-- 번호 -->
+                    <td th:text="${board.id}"></td>
+
+                    <!-- 제목 -->
+                    <td th:text="${board.title}"></td>
+
+                    <!-- 내용 -->
+                    <td th:text="${board.content}"></td>
+
+                    <!-- 작성자 -->
+                    <td th:text="${board.writer}"></td>
+
+                    <!-- 날짜 -->
+                    <td th:date="${board.creatAt}"></td>
+                </tr>
+                </tbody>
+            </table><!-- .tb -->
+
+            <!-- 페이지네이션 추가 -->
+            <div class="pagination">
+                <a href="#" class="prev">&lt; prev</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#" class="next">next &gt;</a>
             </div>
-        </header><!-- #header -->
+        </form><!-- .form -->
+    </article><!-- .cont1 -->
 
-        <article class="cont1">
-            <!-- * 폼 데이터 전송 || action : 어디로 보낼지 || method : 어떻게 보낼지 (get, post) -->
-            <form th:action="@{/list}" method="get">
-                <table class="tb">
-                    <colgroup>
-                        <col width="5%" />
-                        <col width="15%" />
-                        <col width="50%" />
-                        <col width="15%" />
-                        <col width="15%" />
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>내용</th>
-                            <th>작성자</th>
-                            <th>날짜</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="board : ${boards}">
-                            <!-- 번호 -->
-                            <td th:text="${board.id}"></td>
+    <footer id="footer">
+        <span class="copy">copyright &copy;2025 Engineer_Kimminimanimu</span>
+    </footer><!-- #footer -->
 
-                            <!-- 제목 -->
-                            <td th:text="${board.title}"></td>
-
-                            <!-- 내용 -->
-                            <td th:text="${board.content}"></td>
-
-                            <!-- 작성자 -->
-                            <td th:text="${board.writer}"></td>
-
-                            <!-- 날짜 -->
-                            <td th:date="${board.creatAt}"></td>
-                        </tr>
-                    </tbody>
-                </table><!-- .tb -->
-
-                <a th:href="@{/write}" class="write"> 글쓰기 </a><!-- .write -->
-            </form><!-- .form -->
-        </article><!-- .cont1 -->
-        
-        <footer id="footer">
-            <span class="copy">copyright &copy;2025 Engineer_Kimminimanimu</span>
-        </footer><!-- #footer -->
-
-    </div><!-- #warp -->
+</div><!-- #warp -->
 
 </body>
 </html>

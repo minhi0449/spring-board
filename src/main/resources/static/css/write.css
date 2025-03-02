@@ -1,29 +1,26 @@
 @charset "utf-8";
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 /* 
-    날짜 : 2025.01.10 (금)
+    날짜 : 2025.03.02 (일)
     이름 : 김민희
-    내용 : list.css 내용 작성
-
+    내용 : write.css 내용 작성 - 글쓰기 페이지 스타일링
 */
 
 /* reset */
-*{padding: 0; margin: 0;}
+*{padding: 0; margin: 0; box-sizing: border-box; font-family: "Pretendard Variable", sans-serif;}
+body {background-color: #f8f9fa; color: #333;}
 a{text-decoration-line: none; color: #000;}
-input type[]{outline: none;}
-
 
 /* warp */
-#wrap{width: 980px; height: auto; margin: 0 auto;}
-
+#wrap{width: 980px; height: auto; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-top: 30px; margin-bottom: 30px;}
 
 /* header */
 #header{
-    width: 980px; 
-    /* background-color: #ff9;  */
+    width: 100%;
     margin: 0 auto;
-    height: 20px;
-    padding-top: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
 }
 
 .h{
@@ -32,67 +29,144 @@ input type[]{outline: none;}
 
 .tit{
     margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    position: relative;
+    padding-left: 10px;
 }
 
+.tit::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #3574f0;
+    border-radius: 2px;
+}
 
 /* cont1 */
 .cont1{
-    
+    padding: 20px 0;
 }
 
+/* Table Styles */
 .tb{
-    /*width: 500px;*/
-    font-size: 14px;
-    padding: 7px;
-    text-align: center;
-    margin-top: 20px;
-    border: 1px solid #bbb;
+    width: 100%;
+    font-size: 14.5px;
+    border-collapse: collapse;
     border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    margin-bottom: 30px;
 }
 
-
-thead{
-    border-bottom: 1px solid #888;
-    height: 30px;
-    line-height: 30px;
+.tb tbody tr {
+    border-bottom: 1px solid #eee;
 }
 
-tr{
-    text-align: left;
-    padding-bottom: 3px;
+.tb tbody tr td {
+    padding: 15px;
+    color: #555;
 }
 
-th{
-    border-bottom: 1px solid #888;
-}
-
-
-.btns{display: flex; gap: 10px;}
-.btn{
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 14px;
-    margin-top: 10px;
-    display: block;
+.tb tbody tr td:first-child {
+    width: 120px;
+    background-color: #f1f3f9;
+    font-weight: 600;
+    color: #333;
     text-align: center;
-    width: 80px;
-    height: 30px;
-    line-height: 30px;
+    border-right: 1px solid #eee;
+}
+
+.tb tbody tr td input[type="text"] {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.tb tbody tr td input[type="text"]:focus {
+    border-color: #3574f0;
+    box-shadow: 0 0 0 2px rgba(53, 116, 240, 0.1);
+}
+
+/* 내용 입력란 높이 조정 */
+/* 내용 입력란(textarea) 스타일링 */
+.tb tbody tr td textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s;
+    resize: vertical;
+    min-height: 150px;
+}
+
+.tb tbody tr td textarea:focus {
+    border-color: #3574f0;
+    box-shadow: 0 0 0 2px rgba(53, 116, 240, 0.1);
+}
+
+/* 버튼 스타일 */
+.btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    text-align: center;
+    min-width: 100px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 20px;
     border-radius: 5px;
     background-color: #3574f0;
     color: #fff;
+    border: none;
     transition: all 0.3s;
 }
 
-.btn:hover{
-    transition: all 0.3s;
-    background-color: #000;
+.btn:hover {
+    background-color: #2b5fc7;
+    box-shadow: 0 2px 5px rgba(43, 95, 199, 0.3);
 }
 
+.cancle {
+    background-color: #f1f3f9;
+    color: #555;
+}
 
+.cancle:hover {
+    background-color: #e5e9f5;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
 /* footer */
-#footer{}
+#footer{
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
 #footer::after{display: block; content: ""; clear: both;}
-.copy{float: left; display: block; margin-top: 15px; font-size: 13px; color: #999;}
-
+.copy{
+    float: left;
+    display: block;
+    margin-top: 15px;
+    font-size: 13px;
+    color: #999;
+}
