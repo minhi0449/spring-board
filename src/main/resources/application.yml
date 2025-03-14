@@ -55,7 +55,7 @@ spring:
     # 이를 보완하기 위해 해당 캐싱의 속성을 설정 (배포 시 true 설정)
     thymeleaf:
         cache: false
-        prefix: classpath:/templates # HTML 파일 위치 (classpath 가 resource 위치까지 가리킴)
+        prefix: classpath:/templates/ # HTML 파일 위치 (classpath 가 resource 위치까지 가리킴)
         # 컨트롤러에서 반환한 뷰 이름으로 classpath:/templates/[뷰이름].html 파일 찾아 렌더링
 
 
