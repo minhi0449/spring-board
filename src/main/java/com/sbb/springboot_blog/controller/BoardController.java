@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -22,13 +23,14 @@ import java.util.List;
           - 글 보기
 
     수정 이력 :
+    2025.03.14 - URL 매핑 중복 수정 및 템플릿 경로 수정
  */
 
 
 @Controller
 @Log4j2
 @RequiredArgsConstructor
-//@RequestMapping("/board")
+@RequestMapping("/board") // 클래스 레벨 기본 설정
 public class BoardController {
 
     private final BoardService boardService;
@@ -39,23 +41,22 @@ public class BoardController {
         log.info("여기는 글 목록 컨트롤러 : 🍀 ");
         List<Board> boards = boardService.list();
 
-        log.info("저장된 글 목록 1: " + boards);
         // Service에서 생성한 리스트를 "board" 이름으로 반환
+        log.info("조회된 게시글 목록 :{} ", boards);
         model.addAttribute("boards", boards);
 
-        log.info("저장된 글 목록 22 : " + boards);
         return "/board/list";
     }
 
     // 글 작성
-    @GetMapping("/board/write")
+    @GetMapping("/write")
     public String write(){
         log.info("🎈 여기는 글 쓰기 컨트롤러 : GET ");
-        return "/board/write";
+        return "/write";
     }
 
     // 글 작성 후 POST 메서드로 글 쓴 내용을 DB에 저장
-    @PostMapping("/board/write")
+    @PostMapping("/write")
     public String write(BoardDTO boardDTO){
         log.info("📝 여기는 글 쓰기 컨트롤러 : POST");
         boardService.insertBoard(boardDTO);
@@ -64,7 +65,7 @@ public class BoardController {
     }
 
     // 글 보기
-    @GetMapping("/board/view")
+    @GetMapping("/view")
     public String view(Long id, Model model){
         log.info("어이 GetMapping 글 보기👀 컨트롤러 --> ");
         log.info("클릭 된 글 id : "+ id);
@@ -74,7 +75,7 @@ public class BoardController {
         model.addAttribute("boardDTO", boardDTO);
 
 
-        return "/board/view";
+        return "/view"; // springboot 에서 URL 매핑과 템플릿 해석
     }
 
     // 글 보기 (설명)
