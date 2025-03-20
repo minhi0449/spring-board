@@ -1,4 +1,4 @@
-# Spring Boot 익명게시판
+# Spring Boot (익명게시판 프로젝트)
 > 로그인 없는 익명게시판
 
 <img width="1013" alt=":board:write" src="https://github.com/user-attachments/assets/33d9d00d-504d-45c7-9e5a-4743e909342f" />
